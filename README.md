@@ -31,3 +31,10 @@ User Stories for Ultimate Jokes -site
 	* 	Delete any jokes  
 	* 	Submit a new joke  
 
+
+Tasks
+-----
+
+	*	Joonas: Account-related stuff
+	*	Teemu: Joke-related stuff
+	*	Markus: UI-related stuff
