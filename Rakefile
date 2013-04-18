@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Joke::Application.load_tasks
+Ultimatejoke::Application.load_tasks

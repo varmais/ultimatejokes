@@ -9,7 +9,7 @@ Created by:
 
 
 
-User Stories for Ultimate Jokes -site  
+User Stories for Ultimate Ultimatejokes -site  
 -------------------------------------
   
 ### As a user I want to…  
@@ -36,5 +36,5 @@ Tasks
 -----
 
 	*	Joonas: Account-related stuff
-	*	Teemu: Joke-related stuff
+	*	Teemu: Ultimatejoke-related stuff
 	*	Markus: UI-related stuff

@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'rename'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 

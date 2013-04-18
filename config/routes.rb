@@ -1,4 +1,4 @@
-Joke::Application.routes.draw do
+Ultimatejoke::Application.routes.draw do
 
     root to: 'static_pages#home'
  
