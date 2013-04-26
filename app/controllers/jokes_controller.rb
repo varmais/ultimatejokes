@@ -1,6 +1,6 @@
 class JokesController < ApplicationController
 
-	before_filter :find_joke, except: [:new, :create, :index, :update]
+	before_filter :find_joke, except: [:new, :create, :index, :update, :random]
 
 
 	def index
@@ -15,6 +15,7 @@ class JokesController < ApplicationController
 		@joke = Joke.new(params[:joke])
 
 		if @joke.save
+			flash[:success] = "Joke saved successfully!"
 			redirect_to jokes_path
 		else
 			render :new
@@ -28,9 +29,10 @@ class JokesController < ApplicationController
 	end
 
 	def update
-		@joke = Joke.new(params[:joke])
+		@joke = Joke.find(params[:id])
 
 		if @joke.update_attributes(params[:joke])
+			flash[:success] = "Joke updated successfully!"
 			redirect_to :joke
 		else
 			render :edit
@@ -40,6 +42,7 @@ class JokesController < ApplicationController
 	def destroy
 
 		if @joke.destroy
+			flash[:sucess] = "Joke deleted successfully!"
 			redirect_to jokes_path
 		end
 	end
