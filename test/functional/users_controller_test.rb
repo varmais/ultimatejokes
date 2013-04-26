@@ -2,6 +2,8 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
+    :activate_authlogic
+    UserSession.create(users(:one))
     @user = users(:one)
   end
 
@@ -18,12 +20,19 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: @user.attributes
+      post :create, user: User.new(email: @user.email, password: "asdasd", password_confirmation: "asdasd")
     end
 
     assert_redirected_to user_path(assigns(:user))
   end
 
+ # test "should not create user" do
+ #   assert_no_difference('User.count') do
+ #     post :create, user: @user.attributes
+ #   end
+
+ #   assert_redirected_to user_path(assigns(:user))
+ # end
   test "should show user" do
     get :show, id: @user
     assert_response :success

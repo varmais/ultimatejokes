@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all
   helper_method :current_user_session, :current_user
-  filter_parameter_logging :password, :password_confirmation
+
   
   private
     def current_user_session
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       unless current_user
         store_location
         flash[:notice] = "You must be logged in to access this page"
-        redirect_to new_user_session_url
+        redirect_to login_path
         return false
       end
     end
@@ -28,13 +28,13 @@ class ApplicationController < ActionController::Base
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_to account_url
+        redirect_to root_path
         return false
       end
     end
     
     def store_location
-      session[:return_to] = request.request_uri
+      session[:return_to] = request.url
     end
     
     def redirect_back_or_default(default)
