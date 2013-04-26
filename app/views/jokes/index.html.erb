@@ -1,0 +1,7 @@
+<% @jokes.each do |j| %>
+	<div class="row-fluid">
+		<h3><%= j.title %></h3>
+		<p><%= j.content %></p>
+		<p>Points: <%= j.points %></p>
+	</div>
+<% end %>
