@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418140714) do
+ActiveRecord::Schema.define(:version => 20130426110025) do
 
   create_table "jokes", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,25 @@ ActiveRecord::Schema.define(:version => 20130418140714) do
     t.integer  "points"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_sessions", ["session_id"], :name => "index_user_sessions_on_session_id"
+  add_index "user_sessions", ["updated_at"], :name => "index_user_sessions_on_updated_at"
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end
