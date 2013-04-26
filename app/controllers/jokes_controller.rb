@@ -1,6 +1,6 @@
 class JokesController < ApplicationController
 
-	before_filter :find_joke, except: [:new, :create, :index, :update, :random]
+	before_filter :find_joke, except: [:new, :create, :index, :update]
 
 
 	def index
@@ -45,6 +45,16 @@ class JokesController < ApplicationController
 			flash[:sucess] = "Joke deleted successfully!"
 			redirect_to jokes_path
 		end
+	end
+
+	def upvote
+		current_user.upvotes @joke
+   		redirect_to @joke
+	end
+
+	def downvote
+	   	@joke.downvote_from current_user
+  	  	redirect_to(@joke)
 	end
 
 	def find_joke

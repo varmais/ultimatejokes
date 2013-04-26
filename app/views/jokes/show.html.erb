@@ -9,5 +9,9 @@
 			  <%= link_to "Edit", edit_joke_path(@joke), :class=>'btn btn-info' %>
 			  <%= link_to "Delete", @joke, method: :delete, data: {confirm: 'Are you sure?'}, :class=>'btn btn-danger' %>
 		</div>
+		<%= link_to 'Upvote', 
+			{:controller =>"jokes", :action => "upvote", :id => @joke.id}, :class => 'btn', method: :put %>
+		<%= link_to 'Downvote', 
+			{:controller =>"jokes", :action => "downvote", :id => @joke.id}, :class => 'btn', method: :put %>
 	</div>
 </div>
