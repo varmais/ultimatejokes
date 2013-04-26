@@ -6,5 +6,7 @@ Ultimatejoke::Application.routes.draw do
 
     resources :jokes
     resources :user_session
+    put '/jokes/:id/:action' => 'jokes#upvote'
+	put '/jokes/:id/:action' => 'jokes#downvote'
  
 end

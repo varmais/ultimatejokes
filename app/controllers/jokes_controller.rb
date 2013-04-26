@@ -15,6 +15,7 @@ class JokesController < ApplicationController
 		@joke = Joke.new(params[:joke])
 
 		if @joke.save
+			flash[:success] = "Joke saved successfully!"
 			redirect_to jokes_path
 		else
 			render :new
@@ -28,9 +29,10 @@ class JokesController < ApplicationController
 	end
 
 	def update
-		@joke = Joke.new(params[:joke])
+		@joke = Joke.find(params[:id])
 
 		if @joke.update_attributes(params[:joke])
+			flash[:success] = "Joke updated successfully!"
 			redirect_to :joke
 		else
 			render :edit
@@ -40,8 +42,19 @@ class JokesController < ApplicationController
 	def destroy
 
 		if @joke.destroy
+			flash[:sucess] = "Joke deleted successfully!"
 			redirect_to jokes_path
 		end
+	end
+
+	def upvote
+		current_user.upvotes @joke
+   		redirect_to @joke
+	end
+
+	def downvote
+	   	@joke.downvote_from current_user
+  	  	redirect_to(@joke)
 	end
 
 	def find_joke
