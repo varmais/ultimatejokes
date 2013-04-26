@@ -5,5 +5,6 @@ Ultimatejoke::Application.routes.draw do
     root to: 'static_pages#home'
 
     resources :jokes
+    resources :user_session
  
 end
