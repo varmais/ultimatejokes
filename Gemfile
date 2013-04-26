@@ -23,6 +23,7 @@ end
 gem 'rename'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'authlogic'
 
 
 # To use ActiveModel has_secure_password
