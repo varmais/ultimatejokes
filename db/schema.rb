@@ -18,7 +18,10 @@ ActiveRecord::Schema.define(:version => 20130503123327) do
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
+
+  add_index "jokes", ["user_id"], :name => "index_jokes_on_user_id"
 
   create_table "user_sessions", :force => true do |t|
     t.string   "session_id", :null => false

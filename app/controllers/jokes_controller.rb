@@ -1,7 +1,8 @@
 class JokesController < ApplicationController
 
-	before_filter :find_joke, except: [:new, :create, :index, :update]
-  	before_filter :require_user, except: [:index, :show]
+	before_filter :find_joke, only: [:show]
+  	#before_filter :require_user, except: [:index, :show]
+	#before_filter :find_user_joke, only: [:edit, :update, :destroy]
 
 	def index
 		@jokes = Joke.all
@@ -13,6 +14,7 @@ class JokesController < ApplicationController
 
 	def create
 		@joke = Joke.new(params[:joke])
+		@joke.user = current_user
 
 		if @joke.save
 			flash[:success] = "Joke saved successfully!"
@@ -29,8 +31,6 @@ class JokesController < ApplicationController
 	end
 
 	def update
-		@joke = Joke.find(params[:id])
-
 		if @joke.update_attributes(params[:joke])
 			flash[:success] = "Joke updated successfully!"
 			redirect_to :joke
@@ -40,7 +40,6 @@ class JokesController < ApplicationController
 	end
 
 	def destroy
-
 		if @joke.destroy
 			flash[:sucess] = "Joke deleted successfully!"
 			redirect_to jokes_path
@@ -59,5 +58,9 @@ class JokesController < ApplicationController
 
 	def find_joke
 		@joke = Joke.find(params[:id])
+	end
+
+	def find_user_joke
+		@joke = current_user.jokes.find(params[:id])
 	end
 end
