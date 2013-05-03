@@ -11,7 +11,11 @@
 						<%= link_to "Jokes", jokes_path %>
 					</li>
 					<li>
-						<a href="#">Sign in</a>
+						<% if current_user %>
+							<%= link_to "Logout", logout_path %>
+						<% else %>
+							<%= link_to "Sign in!", login_path %>
+						<% end %>
 					</li>
 				</ul>
 			</nav>

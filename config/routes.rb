@@ -5,6 +5,7 @@ Ultimatejoke::Application.routes.draw do
     root to: 'static_pages#home'
 
     resources :jokes
+    resource :user_session
     
     put '/jokes/:id/:action' => 'jokes#upvote'
 	put '/jokes/:id/:action' => 'jokes#downvote'

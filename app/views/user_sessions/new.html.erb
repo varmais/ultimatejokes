@@ -1,17 +1,14 @@
-<div>
-	<%= form_tag("/login", :method => "post") do %>
-		<div>
-			<%=label_tag :email %>
-			<%=text_field_tag :email %>
-		</div>
+<h1>Login</h1>
 
-		<div>
-			<%=label_tag :password %>
-			<%=password_field_tag :password %>
-		</div>
+<%= form_for @user_session, :url => user_session_path do |f| %>
 
-		<div>
-			<%=submit_tag("Login") %>
-		</div>
-	<% end %>
-</div>
+  <%= f.label :email %><br />
+  <%= f.text_field :email %><br />
+  <br />
+  <%= f.label :password %><br />
+  <%= f.password_field :password %><br />
+  <br />
+  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
+  <br />
+  <%= f.submit "Login" %>
+<% end %>
