@@ -1,8 +1,8 @@
 class JokesController < ApplicationController
 
 	before_filter :find_joke, only: [:show]
-  	before_filter :require_user, except: [:index, :show]
-	before_filter :find_user_jokes, only: [:edit, :update, :destroy]
+  	#before_filter :require_user, except: [:index, :show]
+	#before_filter :find_user_joke, only: [:edit, :update, :destroy]
 
 	def index
 		@jokes = Joke.all
@@ -60,7 +60,7 @@ class JokesController < ApplicationController
 		@joke = Joke.find(params[:id])
 	end
 
-	def find_user_jokes
+	def find_user_joke
 		@joke = current_user.jokes.find(params[:id])
 	end
 end
