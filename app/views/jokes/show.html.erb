@@ -4,7 +4,6 @@
 	<div class="row-fluid">
 		<h3><%= @joke.title %></h3>
 		<p><%= @joke.content %></p>
-		<p>Points: <%= @joke.points %></p>
 		<div class="btn-group">
 			  <%= link_to "Edit", edit_joke_path(@joke), :class=>'btn btn-info' %>
 			  <%= link_to "Delete", @joke, method: :delete, data: {confirm: 'Are you sure?'}, :class=>'btn btn-danger' %>

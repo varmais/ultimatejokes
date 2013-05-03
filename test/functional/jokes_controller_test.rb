@@ -26,8 +26,8 @@ class JokesControllerTest < ActionController::TestCase
 
 	test "should create new joke" do
 		login_as(users(:one))
-		assert_difference('Jokes.count') do
-			joke :create, joke: 
+		assert_difference('Joke.count') do
+			post :create, joke: 
 			{title: jokes(:one).title, content: jokes(:one).content}
 		end
 		assert_redirected_to jokes_path
@@ -55,11 +55,11 @@ class JokesControllerTest < ActionController::TestCase
 
 	test "should delete post" do
 		login_as(users(:one))
-		assert_difference('Jokes.count', -1) do
-			delete :destroy, id: posts(:one).id
+		assert_difference('Joke.count', -1) do
+			delete :destroy, id: jokes(:one).id
 		end
 		assert_redirected_to jokes_path
 	end
 
-	
+
 end
