@@ -1,7 +1,7 @@
 class UserSessionsController < ApplicationController
 	before_filter :require_no_user, :only => [:new, :create]
 	before_filter :require_user, :only => :destroy
-	
+
 	def new
 		@user_session = UserSession.new
 	end
@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
 		@user_session = UserSession.new(params[:user_session])
 		if @user_session.save
 			flash[:notice] = "Login successful!"
-			redirect_back_or_default root_path
+			redirect_to jokes_path
 		else
 			flash[:notice] = "Invalid credentials!"
 			render :action => :new
