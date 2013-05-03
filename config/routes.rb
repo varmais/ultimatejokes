@@ -9,8 +9,8 @@ Ultimatejoke::Application.routes.draw do
     put '/jokes/:id/:action' => 'jokes#upvote'
 	put '/jokes/:id/:action' => 'jokes#downvote'
 
-    post '/login' => 'user_session#create'
-    get '/login' => 'user_session#new'
-    get '/logout' => 'user_session#destroy'
+    post '/login' => 'user_sessions#create'
+    get '/login' => 'user_sessions#new'
+    get '/logout' => 'user_sessions#destroy'
  
 end
