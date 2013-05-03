@@ -1,7 +1,7 @@
 class JokesController < ApplicationController
 
 	before_filter :find_joke, except: [:new, :create, :index, :update]
-
+  	before_filter :require_user, except: [:index, :show]
 
 	def index
 		@jokes = Joke.all
