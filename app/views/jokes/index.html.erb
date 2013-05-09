@@ -13,6 +13,13 @@
 			  <%= link_to "Delete", j, method: :delete, data: {confirm: 'Are you sure?'}, :class=>'btn btn-danger' %>
 		</div>
 		<% end %>
+		
+		<% if current_user %>
+		<%= link_to 'Upvote', 
+			{:controller =>"jokes", :action => "upvote", :id => j.id}, :class => 'btn', method: :put %>
+		<%= link_to 'Downvote', 
+			{:controller =>"jokes", :action => "downvote", :id => j.id}, :class => 'btn', method: :put %>
+		<% end %>
 		<hr />
 	<% end %>
 </div>

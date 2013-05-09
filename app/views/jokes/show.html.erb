@@ -4,7 +4,7 @@
 	<div class="row-fluid">
 		<h3><%= @joke.title %></h3>
 		<p><%= @joke.content %></p>
-		
+
 		<dl class="dl-horizontal">
 			<dt>Upvotes:</dt>
 			<dd><%= @joke.likes.size %></dd>
@@ -18,9 +18,12 @@
 			  <%= link_to "Delete", @joke, method: :delete, data: {confirm: 'Are you sure?'}, :class=>'btn btn-danger' %>
 		</div>
 		<% end %>
+
+		<% if current_user %>
 		<%= link_to 'Upvote', 
 			{:controller =>"jokes", :action => "upvote", :id => @joke.id}, :class => 'btn', method: :put %>
 		<%= link_to 'Downvote', 
 			{:controller =>"jokes", :action => "downvote", :id => @joke.id}, :class => 'btn', method: :put %>
+		<% end %>
 	</div>
 </div>
