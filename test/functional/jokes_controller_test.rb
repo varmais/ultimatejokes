@@ -41,7 +41,7 @@ class JokesControllerTest < ActionController::TestCase
 
 	test "should update joke" do
 		login_as(users(:one))
-		put :update, id: jokes(:one), joke: 
+		put :update, id: jokes(:one).id, joke: 
 		{title: 'jooh jooh jooh'}
 		assert_response :redirect
 		assert_redirected_to :joke

@@ -1,6 +1,6 @@
 class JokesController < ApplicationController
 
-	before_filter :find_joke, only: [:show]
+	before_filter :find_joke, only: [:show, :edit, :update, :destroy]
   	#before_filter :require_user, except: [:index, :show]
 	#before_filter :find_user_joke, only: [:edit, :update, :destroy]
 

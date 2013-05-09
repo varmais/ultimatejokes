@@ -1,8 +1,10 @@
 <div class="span4">
 	<div class="well sidebar-nav">
 		<ul class="nav nav-list">
+			<% if current_user && current_user != nil %>
 			<li class="nav-header">User info:</li>
 			<li><%= link_to "My profile", edit_user_path(current_user.id) %></li>
+			<% end %>
 			<li class="nav-header">Jokes:</li>
 			<li><%= link_to "All jokes", jokes_path %></li>
 			<li><%= link_to "New joke", new_joke_path %></li>
