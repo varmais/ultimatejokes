@@ -8,11 +8,18 @@
 			<p class='joke-content'><%= j.content %></p>
 			<p class='joke-author'>By: <%= link_to j.user.email, user_path(j.user) %></p>
 		</div>
-		<% if current_user && current_user.id == j.user.id %>
+		<% if current_user && j.user.id && current_user.id == j.user.id %>
 		<div class="btn-group">
 			  <%= link_to "Edit", edit_joke_path(j), :class=>'btn btn-info' %>
 			  <%= link_to "Delete", j, method: :delete, data: {confirm: 'Are you sure?'}, :class=>'btn btn-danger' %>
 		</div>
+		<% end %>
+		
+		<% if current_user %>
+		<%= link_to 'Upvote', 
+			{:controller =>"jokes", :action => "upvote", :id => j.id}, :class => 'btn', method: :put %>
+		<%= link_to 'Downvote', 
+			{:controller =>"jokes", :action => "downvote", :id => j.id}, :class => 'btn', method: :put %>
 		<% end %>
 		<hr />
 	<% end %>

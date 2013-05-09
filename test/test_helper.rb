@@ -11,6 +11,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  setup :activate_authlogic
 end
 
 
