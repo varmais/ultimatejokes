@@ -95,4 +95,37 @@ class UsersController < ApplicationController
     end
     
   end
+  #Promote and demote admin statuses
+  def promote_to_admin
+    if current_user_is_admin
+      @user = User.find(params[:id])
+      @user.role = "admin"
+      if @user.save
+        flash[:success] = "Promoted #{@user.email} to admin!"
+        redirect_to users_url
+      else
+        flash[:warning] = "Something went wrong when promoting #{@user.email} to admin!"
+        redirect_to users_url
+      end 
+    else 
+      flash[:warning] = "You cannot promote users since you're not an admin!"
+      redirect_to users_url
+    end 
+  end
+  def demote_to_user
+    if current_user_is_admin
+      @user = User.find(params[:id])
+      @user.role = ""
+      if @user.save
+        flash[:success] = "Demoted #{@user.email} to user!"
+        redirect_to users_url
+      else
+        flash[:warning] = "Something went wrong when promoting #{@user.email} to admin!"
+        redirect_to users_url
+      end
+    else
+      flash[:warning] = "You cannot demote users since you're not an admin!" 
+      redirect_to users_url
+    end 
+  end
 end

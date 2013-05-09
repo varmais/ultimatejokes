@@ -3,6 +3,13 @@
 <p>
   <b>Email:</b>
   <%= @user.email %>
+  <% if current_user_is_admin %>
+    <% if @user.role != "admin" %>
+        <%= link_to 'Promote user to admin', promote_to_admin_path(@user.id), :class => "btn", :method => "post" %>
+    <% else %>
+        <%= link_to 'Demote admin to regular user', demote_to_user_path(@user.id), :class => "btn", :method => "post" %>
+    <% end %>
+  <% end %>
 </p>
 
 

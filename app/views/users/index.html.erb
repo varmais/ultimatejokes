@@ -1,6 +1,6 @@
 <h1>Listing users</h1>
 
-<table>
+<table class='users-table'>
   <tr>
     <th>Email</th>
     <th></th>
@@ -11,12 +11,31 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.email %></td>
-    <td><%= link_to 'Show', user %></td>
+    <td>
+      <% if user.role == "admin" %>
+       <span class='user-is-admin'>Admin</span> 
+      <% end %>
+    </td>
+    <td>
+      <div class='btn-group'>
+        <% if user.role == "admin" %>
+           <% if current_user_is_admin %>
+            <%= link_to 'Demote to regular user', demote_to_user_path(user.id), :class => "btn", :method => "post" %>
+          <% end %>
+        <% else %>
+          <% if current_user_is_admin %>
+            <%= link_to 'Promote to admin', promote_to_admin_path(user.id), :class => "btn", :method => "post" %>
+          <% end %>
+        <% end %>
+        
+         <%= link_to 'Show', user, :class => "btn btn-info" %>
+        <% if current_user && (current_user_is_admin || user.id == current_user.id) %>
+          <%= link_to 'Edit', edit_user_path(user), :class => "btn" %>
+          <%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete, :class => "btn btn-danger" %>
 
-    <% if current_user && (current_user_is_admin || user.id == current_user.id) %>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %></td>
-    <% end %>
+        <% end %>
+      </div>
+    </td> 
   </tr>
 <% end %>
 </table>
