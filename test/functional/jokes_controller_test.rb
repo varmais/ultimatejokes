@@ -14,7 +14,8 @@ class JokesControllerTest < ActionController::TestCase
 	end
 
 	def login_as(user)
-		@request.session[:user_id] = user ? user.id : nil
+		#@request.session[:user_id] = user ? user.id : nil
+		UserSession.create(user)
 	end
 
 	#these should only work when logged in
