@@ -80,12 +80,19 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    if current_user && current_user.id.to_s == params[:id].to_s || current_user_is_admin
+      @user = User.find(params[:id])
+      @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
+      flash[:warning] = "User account deleted!"
+      respond_to do |format|
+        format.html { redirect_to users_url }
+        format.json { head :no_content }
+      end
+    else
+      flash[:warning] = "Cannot delete the account of another user!"
+      redirect_to users_url
     end
+    
   end
 end

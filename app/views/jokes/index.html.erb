@@ -3,9 +3,10 @@
 <div class="span8">
 	<h3>New jokes:</h3>
 	<% @jokes.each do |j| %>
-		<div class="row-fluid">
-			<h3><%= link_to j.title, joke_path(j) %></h3>
-			<p><%= j.content %></p>
+		<div class="row-fluid jokes-container">
+			<h3 class='joke-title'><%= link_to j.title, joke_path(j) %></h3>
+			<p class='joke-content'><%= j.content %></p>
+			<p class='joke-author'>By: <%= link_to j.user.email, user_path(j.user) %></p>
 		</div>
 		<% if current_user && current_user.id == j.user.id %>
 		<div class="btn-group">

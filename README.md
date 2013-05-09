@@ -32,6 +32,8 @@ User Stories for Ultimate Ultimatejokes -site
 	* 	Submit a new joke  
 
 
+To get some example data, use rake db:seed
+
 Tasks
 -----
 

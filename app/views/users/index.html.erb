@@ -13,14 +13,11 @@
     <td><%= user.email %></td>
     <td><%= link_to 'Show', user %></td>
 
-    <% if current_user_is_admin %>
+    <% if current_user && (current_user_is_admin || user.id == current_user.id) %>
       <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %></td>
     <% end %>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New User', new_user_path %>
