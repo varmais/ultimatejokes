@@ -1,6 +1,6 @@
 class JokesController < ApplicationController
 
-	before_filter :find_joke, only: [:show, :edit, :update, :destroy]
+	before_filter :find_joke, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   	#before_filter :require_user, except: [:index, :show]
 	#before_filter :find_user_joke, only: [:edit, :update, :destroy]
 
@@ -47,7 +47,7 @@ class JokesController < ApplicationController
 	end
 
 	def upvote
-		current_user.upvotes @joke
+		@joke.liked_by current_user
    		redirect_to @joke
 	end
 

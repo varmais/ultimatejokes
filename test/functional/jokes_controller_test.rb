@@ -61,19 +61,18 @@ class JokesControllerTest < ActionController::TestCase
 		assert_redirected_to jokes_path
 	end
 
-#	test "should not edit other's joke" do
-#		login_as(users(:one))
-#		get :edit, id: jokes(:two).id
-#		assert_redirected_to :joke
-#	end
+	test "should upvote joke" do
+		login_as(users(:one))
+		put :upvote, id: jokes(:one)
+		assert_response :redirect
+		assert_redirected_to :joke
+	end
 
-#	test "should not delete other's joke" do
-#		login_as(users(:one))
-#		assert_difference('Joke.count', -1) do
-#			delete :destroy, id: jokes(:two).id
-#		end
-#		assert_response :redirect
-#		assert_redirected_to :joke
-#	end
+	test "should downvote joke" do
+		login_as(users(:one))
+		put :downvote, id: jokes(:one)
+		assert_response :redirect
+		assert_redirected_to :joke
+	end
 
 end
