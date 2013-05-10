@@ -25,7 +25,6 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'authlogic'
 gem 'acts_as_votable', '~> 0.5.0'
-gem 'cancan'
 
 
 # To use ActiveModel has_secure_password
