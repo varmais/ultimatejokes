@@ -1,9 +1,11 @@
 class JokesController < ApplicationController
 
-	before_filter :find_joke, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-	#before_filter :find_joke, only: [:show, :upvote, :downvote]
+	#before_filter :find_joke, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+	before_filter :find_joke, only: [:show, :upvote, :downvote]
   	before_filter :require_user, except: [:index, :show]
-	#before_filter :find_user_joke, only: [:edit, :update, :destroy]
+	before_filter :find_user_joke, only: [:edit, :update, :destroy]
+	#load_and_authorize_resource
+	#skip_authorize_resource only: [:index, :show]
 
 	def index
 		@jokes = Joke.all
@@ -42,7 +44,7 @@ class JokesController < ApplicationController
 
 	def destroy
 		if @joke.destroy
-			flash[:sucess] = "Joke deleted successfully!"
+			flash[:success] = "Joke deleted successfully!"
 			redirect_to jokes_path
 		end
 	end
@@ -62,6 +64,10 @@ class JokesController < ApplicationController
 	end
 
 	def find_user_joke
-		@joke = current_user.jokes.find(params[:id])
+		@joke = Joke.find(params[:id])
+		if @joke.user_id != current_user.id
+			flash[:error] = "Not authorized!"
+			redirect_to jokes_path
+		end
 	end
 end
