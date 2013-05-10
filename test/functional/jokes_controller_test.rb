@@ -40,6 +40,13 @@ class JokesControllerTest < ActionController::TestCase
 		assert_response :success
 	end
 
+	test "should not get edit joke of other's" do
+		login_as(users(:one))
+		get :edit, id: jokes(:two)
+		assert_response :redirect
+		assert_redirected_to jokes_path
+	end
+
 	test "should update joke" do
 		login_as(users(:one))
 		put :update, id: jokes(:one), joke: 
@@ -54,10 +61,25 @@ class JokesControllerTest < ActionController::TestCase
 		assert_template :edit
 	end
 
+	test "should not update other's joke" do
+		login_as(users(:one))
+		put :update, id: jokes(:two), joke: {title: 'hiio hoi'}
+		assert_response :redirect
+		assert_redirected_to jokes_path
+	end
+
 	test "should delete joke" do
 		login_as(users(:one))
 		assert_difference('Joke.count', -1) do
 			delete :destroy, id: jokes(:one).id
+		end
+		assert_redirected_to jokes_path
+	end
+
+	test "should not delete other's joke" do
+		login_as(users(:one))
+		assert_no_difference 'Joke.count' do
+			delete :destroy, id: jokes(:two).id
 		end
 		assert_redirected_to jokes_path
 	end
