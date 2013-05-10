@@ -17,9 +17,9 @@
 		
 		<% if current_user %>
 		<%= link_to 'Upvote', 
-			{:controller =>"jokes", :action => "upvote", :id => j.id}, :class => 'btn', method: :put %>
+			{:controller =>"jokes", :action => "upvote", :id => j.id}, :class => 'btn  btn-success', method: :put %>
 		<%= link_to 'Downvote', 
-			{:controller =>"jokes", :action => "downvote", :id => j.id}, :class => 'btn', method: :put %>
+			{:controller =>"jokes", :action => "downvote", :id => j.id}, :class => 'btn btn-warning', method: :put %>
 		<% end %>
 		<hr />
 	<% end %>
