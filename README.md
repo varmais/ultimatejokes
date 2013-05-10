@@ -13,23 +13,23 @@ User Stories for Ultimate Ultimatejokes -site
 -------------------------------------
   
 ### As a user I want to…  
-	* 	Create an account  
-	* 	Edit my profile  
-	* 	Delete my account  
-	* 	Login with credentials  
-	* 	Submit a new joke  
-	* 	View submitted jokes  
-	* 	Upvote / downvote jokes  
-	* 	Edit my jokes  
-	* 	Delete my jokes  
+	* 	Create an account  - ready
+	* 	Edit my profile  - ready
+	* 	Delete my account  -ready
+	* 	Login with credentials  -ready
+	* 	Submit a new joke -ready 
+	* 	View submitted jokes  -ready
+	* 	Upvote / downvote jokes  -ready
+	* 	Edit my jokes  -ready
+	* 	Delete my jokes  -ready
   
 ### As an admin I want to…  
 	* 	Create new accounts  
-	* 	Edit user accounts  
-	* 	Delete user accounts  
-	* 	Edit any jokes  
-	* 	Delete any jokes  
-	* 	Submit a new joke  
+	* 	Edit user accounts  -ready
+	* 	Delete user accounts  -ready
+	* 	Edit any jokes  -ready
+	* 	Delete any jokes  -ready
+	* 	Submit a new joke  -ready
 
 
 To get some example data, use rake db:seed
@@ -37,6 +37,6 @@ To get some example data, use rake db:seed
 Tasks
 -----
 
-	*	Joonas: Account-related stuff
+	*	Joonas: Account-related stuff -ready
 	*	Teemu: Ultimatejoke-related stuff
 	*	Markus: UI-related stuff

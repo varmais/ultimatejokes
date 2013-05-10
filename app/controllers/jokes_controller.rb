@@ -65,7 +65,7 @@ class JokesController < ApplicationController
 
 	def find_user_joke
 		@joke = Joke.find(params[:id])
-		if @joke.user_id != current_user.id
+		if @joke.user_id != current_user.id && !current_user_is_admin
 			flash[:error] = "Not authorized!"
 			redirect_to jokes_path
 		end
