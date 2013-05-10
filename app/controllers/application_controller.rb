@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_user_session, :current_user, :current_user_is_admin
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
   
   private
     def current_user_session

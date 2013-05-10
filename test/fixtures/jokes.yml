@@ -3,9 +3,9 @@
 one:
   title: Chicken
   content: Why chicken crossed the road?
-  user_id: '1'
+  user: one
 
 two:
   title: Vader
   content: What Darth Vader said to Luke?
-  user_id: '2'
+  user: one
