@@ -4,7 +4,9 @@
 	<div class="row-fluid jokes-container">
 		<h3><%= @joke.title %></h3>
 		<p><%= @joke.content %></p>
-
+		<% if @joke.image_url %>
+			<img class='joke-image' src="<%= image_path(@joke.image_url) %>" />
+		<% end %>
 		<dl class="dl-horizontal">
 			<dt>Upvotes:</dt>
 			<dd><%= @joke.likes.size %></dd>

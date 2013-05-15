@@ -7,11 +7,19 @@
 
 		<div>
 		<%= f.label :content %>
-		<%= f.text_area :content %>
+		<%= f.text_area :content, :class => "joke-content-textarea" %>
 		</div>
 
 		<%= f.label :image_url %>
-		<%= f.text_field :image_url %>
+		<%= f.text_field :image_url, :class => "external-image-url-input" %>
+
+		<div class='image-preview-wrapper'>
+			<p class="image-loadingerror-message"></p>
+			<img class='preview-image'/>
+		</div>
+		<p> Or upload your own image </p>
+
+		<%= f.file_field :image_data %>
 
 		<div>
 		<%= f.submit %>
