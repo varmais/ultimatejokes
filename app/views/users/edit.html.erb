@@ -2,9 +2,6 @@
 
 <%= render 'form' %>
 
-<div class="actions">
-    <button class="btn btn-primary" type="submit">
-        <%= link_to 'Delete your account', @user, confirm: 'Are you sure?', method: :delete %>
-    </button>
-</div>
+<%= link_to 'Delete account', @user, confirm: 'Are you sure?', method: :delete, :class => "btn btn-danger" %>
+<br/><br/>
 <%= link_to 'Back', @user, :class => "btn btn-inverse" %>
