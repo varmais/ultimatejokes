@@ -3,7 +3,7 @@
 		<ul class="nav nav-list">
 			<li class="nav-header">User info:</li>
 			<% if current_user %>
-				<li><%= link_to "My profile", edit_user_path(current_user.id) %></li>
+				<li><%= link_to "My profile", user_path(current_user.id) %></li>
 			<% else %>	
 				<li><%= link_to "Sign up now to submit your own jokes!", new_user_path %></li>
 			<% end %>		
