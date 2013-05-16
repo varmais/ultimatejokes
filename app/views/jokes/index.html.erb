@@ -6,7 +6,14 @@
 		<div class="row-fluid jokes-container">
 			<h3 class='joke-title'><%= link_to j.title, joke_path(j) %></h3>
 			<p class='joke-content'><%= j.content %></p>
-			<p class='joke-author'>By: <%= link_to j.user.email, user_path(j.user) %></p>
+			<% if j.image_url %>
+				<img class='joke-image' src="<%= image_path(j.image_url) %>" />
+			<% end %>
+			<% if j.user && j.user.email %>
+				<p class='joke-author'>By: <%= link_to j.user.email, user_path(j.user) %></p>
+			<% else %>
+				<p class='joke-author'>By: <span class='italic'>Removed user-account</span></p>
+			<% end %>
 		</div>
 		<% if (current_user && j.user.id && current_user.id == j.user.id) || current_user_is_admin  %>
 		<div class="btn-group">

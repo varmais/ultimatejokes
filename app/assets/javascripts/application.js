@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+
+$(document).ready(function() {
+    $(".preview-image").on("error", function(evt) {
+        $(".image-loadingerror-message").text("Couldn't load image, invalid url or host has disabled hotlinking");
+    });
+
+    $(".external-image-url-input").focusout(function showPreviewImage(evt){
+        if(!$(this).val()) {
+            $(".preview-image").removeAttr("src");
+            return $(".image-loadingerror-message").text("");
+        }
+        $(".image-loadingerror-message").text("");
+        $(".preview-image").attr("src", $(this).val());
+    });
+});

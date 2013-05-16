@@ -6,3 +6,23 @@
 .jokes-container {
     white-space: pre-line;
 }
+
+.joke-image {
+    max-width: 90%;
+}
+.joke-content-textarea {
+    width: 90%;
+}
+.external-image-url-input {
+    width: 50%;
+    display: inline-block;
+}
+.image-preview-wrapper {
+    width: 200px;
+    display: inline-block;
+    .preview-image {
+        max-width: 200px;
+        height: auto;
+        border: 1px solid rgba(245, 245, 245, 0.98);
+    }
+}

@@ -7,7 +7,14 @@ one:
     persistence_token: <%= Authlogic::Random.hex_token %>
 
 two:
-    email: markus@procrastinating.com
+    email: markus2@procrastinating.com
+    password_salt: <%= salt = Authlogic::Random.hex_token %>
+    crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("markusrocks2" + salt) %>
+    persistence_token: <%= Authlogic::Random.hex_token %>
+
+adminuser:
+    email: admin@procrastinating.com
     password_salt: <%= salt = Authlogic::Random.hex_token %>
     crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("markusrocks" + salt) %>
     persistence_token: <%= Authlogic::Random.hex_token %>
+    role: admin
