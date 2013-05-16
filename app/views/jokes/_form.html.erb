@@ -2,16 +2,16 @@
 	<%= form_for @joke do |f| %>
 		<div>
 		<%= f.label :title %>
-		<%= f.text_field :title %>
+		<%= f.text_field :title, :placeholder => "Insert the title of your joke..." %>
 		</div>
 
 		<div>
 		<%= f.label :content %>
-		<%= f.text_area :content, :class => "joke-content-textarea" %>
+		<%= f.text_area :content, :class => "joke-content-textarea", :placeholder => "Write your joke here..." %>
 		</div>
 
 		<%= f.label :image_url %>
-		<%= f.text_field :image_url, :class => "external-image-url-input" %>
+		<%= f.text_field :image_url, :class => "external-image-url-input", :placeholder => "Insert URL of a picture here..." %>
 
 		<div class='image-preview-wrapper'>
 			<p class="image-loadingerror-message"></p>
